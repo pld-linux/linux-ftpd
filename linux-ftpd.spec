@@ -6,6 +6,7 @@ Release:	3
 License:	BSD
 Group:		Daemons
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/%{name}-%{version}.tar.gz
+# Source0-md5:	f5f491564812db5d8783daa538c49186
 Source1:	%{name}.inetd
 PreReq:		rc-inetd
 Requires(post):	awk
