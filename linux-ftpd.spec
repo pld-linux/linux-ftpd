@@ -71,8 +71,6 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd/ftpd
 
 mv -f ftpd/ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd
 
-gzip -9nf README ChangeLog
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -95,7 +93,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc {ChangeLog,README}.gz
+%doc ChangeLog README
 
 %attr(755,root,root) %dir %{_sysconfdir}
 
