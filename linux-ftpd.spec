@@ -27,7 +27,7 @@ Obsoletes:	vsftpd
 Obsoletes:	wu-ftpd
 
 %define		_sysconfdir	/etc
-%define		_homedir	/home/ftp/pub
+%define		_homedir	/home/services/ftp/pub
 
 %description
 The linux-ftpd package contains the linux-ftpd FTP (File Transfer
@@ -102,5 +102,5 @@ fi
 %attr(755,root,root) %{_sbindir}/ftpd
 %{_mandir}/man[58]/*
 
-%dir /home/ftp/pub
-%attr(711,root,root) %dir /home/ftp/pub/Incoming
+%dir /home/services/ftp/pub
+%attr(711,root,root) %dir /home/services/ftp/pub/Incoming
