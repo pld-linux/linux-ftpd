@@ -27,9 +27,9 @@ Obsoletes:	wu-ftpd
 
 %description
 The linux-ftpd package contains the linux-ftpd FTP (File Transfer
-Protocol) server daemon.  The FTP protocol is a method of transferring
-files between machines on a network and/or over the Internet. 
-Supports shadowed passowrds. Does not (yet) support PAM.
+Protocol) server daemon. The FTP protocol is a method of transferring
+files between machines on a network and/or over the Internet. Supports
+shadowed passowrds. Does not (yet) support PAM.
 
 %description -l pl
 Ten pakiet zawiera serwer FTP (protoko³u transmisji plików)
@@ -57,7 +57,7 @@ install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
 	SBINDIR=%{_sbindir} \
 	MANDIR=%{_mandir} \
 	DAEMONMODE=755 \
-	MANMODE=644 
+	MANMODE=644
 
 rm -f $RPM_BUILD_ROOT%{_sbindir}/in.ftpd
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd/ftpd
@@ -72,7 +72,7 @@ gzip -9nf README ChangeLog
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post 
+%post
 awk 'BEGIN { FS = ":" }; { if($3 < 1000) print $1; }' < /etc/passwd >> %{_sysconfdir}/ftpusers.default
 if [ ! -f %{_sysconfdir}/ftpusers ]; then
 	( cd %{_sysconfdir}; mv -f ftpusers.default ftpusers )
