@@ -2,7 +2,7 @@ Summary:	FTP Daemon
 Summary(pl):	Serwer FTP
 Name:		linux-ftpd
 Version:	0.17
-Release:	2
+Release:	3
 License:	BSD
 Group:		Daemons
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/%{name}-%{version}.tar.gz
@@ -94,8 +94,6 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README
-
-%attr(755,root,root) %dir %{_sysconfdir}
 
 %attr(640,root,root) %{_sysconfdir}/ftpusers.default
 %attr(640,root,root) %ghost %{_sysconfdir}/ftpusers
