@@ -1,16 +1,15 @@
 Summary:	FTP Daemon
-Summary(pl):	Serwer FTP  
+Summary(pl):	Serwer FTP
 Name:		linux-ftpd
 Version:	0.17
-Release:	0
+Release:	1
 License:	BSD
 Group:		Daemons
 Group(de):	Server
 Group(pl):	Serwery
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
-PreReq:		rc-inetd
-Requires:	rc-inetd
+Prereq:		rc-inetd
 Requires:	inetdaemon
 Provides:	ftpserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -22,6 +21,7 @@ Obsoletes:	heimdal-ftpd
 Obsoletes:	muddleftpd
 Obsoletes:	proftpd
 Obsoletes:	pure-ftpd
+Obsoletes:	troll-ftpd
 Obsoletes:	wu-ftpd
 
 %define		_sysconfdir	/etc
@@ -32,6 +32,12 @@ The linux-ftpd package contains the linux-ftpd FTP (File Transfer
 Protocol) server daemon.  The FTP protocol is a method of transferring
 files between machines on a network and/or over the Internet. 
 Supports shadowed passowrds. Does not (yet) support PAM.
+
+%description -l pl
+Ten pakiet zawiera serwer FTP (protoko³u transmisji plików)
+linux-ftpd. Protokó³ FTP jest sposobem transmisji plików pomiêdzy
+maszynami w sieci i przez Internet. linux-ftpd obs³uguje has³a w pliku
+shadow, na razie nie wspiera PAM.
 
 %prep
 %setup -q
@@ -65,6 +71,9 @@ mv -f ftpd/ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd
 
 gzip -9nf README ChangeLog
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post 
 awk 'BEGIN { FS = ":" }; { if($3 < 1000) print $1; }' < /etc/passwd >> %{_sysconfdir}/ftpusers.default
 if [ ! -f %{_sysconfdir}/ftpusers ]; then
@@ -81,9 +90,6 @@ fi
 if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload 1>&2
 fi
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
