@@ -7,7 +7,9 @@ License:	BSD
 Group:		Daemons
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
-Prereq:		rc-inetd
+PreReq:		rc-inetd
+Requires(post):	awk
+Requires(post):	fileutils
 Requires:	inetdaemon
 Provides:	ftpserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -75,7 +77,8 @@ mv -f ftpd/ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd
 rm -rf $RPM_BUILD_ROOT
 
 %post
-awk 'BEGIN { FS = ":" }; { if($3 < 1000) print $1; }' < /etc/passwd >> %{_sysconfdir}/ftpusers.default
+umask 027
+awk 'BEGIN { FS = ":" }; { if($3 < 500) print $1; }' < /etc/passwd >> %{_sysconfdir}/ftpusers.default
 if [ ! -f %{_sysconfdir}/ftpusers ]; then
 	( cd %{_sysconfdir}; mv -f ftpusers.default ftpusers )
 fi
@@ -95,7 +98,7 @@ fi
 %defattr(644,root,root,755)
 %doc ChangeLog README
 
-%attr(640,root,root) %{_sysconfdir}/ftpusers.default
+%attr(640,root,root) %config(missingok) %verify(not size mtime md5) %{_sysconfdir}/ftpusers.default
 %attr(640,root,root) %ghost %{_sysconfdir}/ftpusers
 %attr(640,root,root) /etc/sysconfig/rc-inetd/ftpd
 
