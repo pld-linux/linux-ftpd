@@ -18,6 +18,7 @@ Obsoletes:	ftpserver
 Obsoletes:	anonftp
 Obsoletes:	bftpd
 Obsoletes:	ftpd-BSD
+Obsoletes:	glftpd
 Obsoletes:	heimdal-ftpd
 Obsoletes:	muddleftpd
 Obsoletes:	proftpd
