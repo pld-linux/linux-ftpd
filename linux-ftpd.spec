@@ -29,7 +29,6 @@ Obsoletes:	troll-ftpd
 Obsoletes:	vsftpd
 Obsoletes:	wu-ftpd
 
-%define		_sysconfdir	/etc
 %define		_homedir	/home/services/ftp/pub
 
 %description
@@ -60,7 +59,8 @@ install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man{5,8}}
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_homedir}/Incoming}
 install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
 
-%{__make} install INSTALLROOT=$RPM_BUILD_ROOT \
+%{__make} install \
+	INSTALLROOT=$RPM_BUILD_ROOT \
 	SBINDIR=%{_sbindir} \
 	MANDIR=%{_mandir} \
 	DAEMONMODE=755 \
