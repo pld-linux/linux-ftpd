@@ -64,7 +64,7 @@ install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
 	MANMODE=644
 
 rm -f $RPM_BUILD_ROOT%{_sbindir}/in.ftpd
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd/ftpd
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/ftpd
 
 :> $RPM_BUILD_ROOT%{_sysconfdir}/ftpusers.default
 :> $RPM_BUILD_ROOT%{_sysconfdir}/ftpusers
