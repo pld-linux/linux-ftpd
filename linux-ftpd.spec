@@ -5,6 +5,7 @@ Version:	0.17
 Release:	0
 License:	BSD
 Group:		Daemons
+Group(de):	Server
 Group(pl):	Serwery
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
@@ -14,11 +15,14 @@ Requires:	inetdaemon
 Provides:	ftpserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	ftpserver
-Obsoletes:	wu-ftpd
 Obsoletes:	anonftp
-Obsoletes:	ftpd-BSD
-Obsoletes:	proftpd
 Obsoletes:	bftpd
+Obsoletes:	ftpd-BSD
+Obsoletes:	heimdal-ftpd
+Obsoletes:	muddleftpd
+Obsoletes:	proftpd
+Obsoletes:	pure-ftpd
+Obsoletes:	wu-ftpd
 
 %define		_sysconfdir	/etc
 %define		_homedir	/home/ftp/pub
@@ -37,13 +41,13 @@ Supports shadowed passowrds. Does not (yet) support PAM.
 	--installroot=$RPM_BUILD_ROOT \
 	--prefix=%{_prefix}
 
-%{__make} CFLAGS="$RPM_OPT_FLAGS -I../support"
+%{__make} CFLAGS="%{rpmcflags} -I../support"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man{5,8}}
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_homedir}/Incoming}
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd
+install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
 
 %{__make} install INSTALLROOT=$RPM_BUILD_ROOT \
 	SBINDIR=%{_sbindir} \
@@ -59,7 +63,7 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd/ftpd
 
 mv -f ftpd/ftpd $RPM_BUILD_ROOT%{_sbindir}/ftpd
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man[58]/* README ChangeLog
+gzip -9nf README ChangeLog
 
 %post 
 awk 'BEGIN { FS = ":" }; { if($3 < 1000) print $1; }' < /etc/passwd >> %{_sysconfdir}/ftpusers.default
