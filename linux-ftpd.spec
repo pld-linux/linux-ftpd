@@ -5,8 +5,6 @@ Version:	0.17
 Release:	1
 License:	BSD
 Group:		Daemons
-Group(de):	Server
-Group(pl):	Serwery
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Prereq:		rc-inetd
