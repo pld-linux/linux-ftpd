@@ -18,6 +18,7 @@ Obsoletes:	wu-ftpd
 Obsoletes:	anonftp
 Obsoletes:	ftpd-BSD
 Obsoletes:	proftpd
+Obsoletes:	bftpd
 
 %define		_sysconfdir	/etc
 %define		_homedir	/home/ftp/pub
