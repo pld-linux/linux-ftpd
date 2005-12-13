@@ -8,10 +8,10 @@ Group:		Daemons
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/%{name}-%{version}.tar.gz
 # Source0-md5:	f5f491564812db5d8783daa538c49186
 Source1:	%{name}.inetd
-PreReq:		rc-inetd
 Requires(post):	awk
 Requires(post):	fileutils
 Requires:	inetdaemon
+Requires:	rc-inetd
 Provides:	ftpserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	ftpserver
@@ -100,9 +100,9 @@ fi
 %defattr(644,root,root,755)
 %doc ChangeLog README
 
-%attr(640,root,root) %config(missingok) %verify(not size mtime md5) %{_sysconfdir}/ftpusers.default
+%attr(640,root,root) %config(missingok) %verify(not md5 mtime size) %{_sysconfdir}/ftpusers.default
 %attr(640,root,root) %ghost %{_sysconfdir}/ftpusers
-%attr(640,root,root) /etc/sysconfig/rc-inetd/ftpd
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/ftpd
 
 %attr(755,root,root) %{_sbindir}/ftpd
 %{_mandir}/man[58]/*
