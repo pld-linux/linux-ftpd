@@ -1,5 +1,5 @@
 Summary:	FTP Daemon
-Summary(pl):	Serwer FTP
+Summary(pl.UTF-8):   Serwer FTP
 Name:		linux-ftpd
 Version:	0.17
 Release:	3
@@ -39,10 +39,10 @@ Protocol) server daemon. The FTP protocol is a method of transferring
 files between machines on a network and/or over the Internet. Supports
 shadowed passowrds. Does not (yet) support PAM.
 
-%description -l pl
-Ten pakiet zawiera serwer FTP (protoko�u transmisji plik�w)
-linux-ftpd. Protok� FTP jest sposobem transmisji plik�w pomi�dzy
-maszynami w sieci i przez Internet. linux-ftpd obs�uguje has�a w pliku
+%description -l pl.UTF-8
+Ten pakiet zawiera serwer FTP (protokołu transmisji plików)
+linux-ftpd. Protokół FTP jest sposobem transmisji plików pomiędzy
+maszynami w sieci i przez Internet. linux-ftpd obsługuje hasła w pliku
 shadow, na razie nie wspiera PAM.
 
 %prep
