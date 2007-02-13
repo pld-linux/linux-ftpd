@@ -1,5 +1,5 @@
 Summary:	FTP Daemon
-Summary(pl.UTF-8):   Serwer FTP
+Summary(pl.UTF-8):	Serwer FTP
 Name:		linux-ftpd
 Version:	0.17
 Release:	3
