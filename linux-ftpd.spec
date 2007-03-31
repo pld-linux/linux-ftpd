@@ -2,7 +2,7 @@ Summary:	FTP Daemon
 Summary(pl.UTF-8):	Serwer FTP
 Name:		linux-ftpd
 Version:	0.17
-Release:	3
+Release:	4
 License:	BSD
 Group:		Daemons
 Source0:	ftp://ftp.linux.org.uk/pub/linux/Networking/netkit/%{name}-%{version}.tar.gz
@@ -20,6 +20,7 @@ Obsoletes:	ftpd-BSD
 Obsoletes:	ftpserver
 Obsoletes:	glftpd
 Obsoletes:	heimdal-ftpd
+Obsoletes:	krb5-ftpd
 Obsoletes:	muddleftpd
 Obsoletes:	proftpd
 Obsoletes:	proftpd-common
